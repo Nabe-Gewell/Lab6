@@ -258,7 +258,7 @@ public class PokerTableController {
 		hBoxDeck.getChildren().add(imgBottomCard);
 
 		//int iDraw = HubGamePlay.getDrawCnt().getDrawNo();
-		
+
 		for (int i: HubGamePlay.GetOrder(HubGamePlay.getGameDealer().getiPlayerPosition()))
 		{
 			if (HubGamePlay.getPlayerByPosition(i) != null)
@@ -288,7 +288,6 @@ public class PokerTableController {
 				}
 			}
 		}
-
 	}
 
 	@FXML
@@ -306,16 +305,15 @@ public class PokerTableController {
 
 		mainApp.messageSend(act);
 	}
-	
-	@FXML
-	void btnDraw(ActionEvent event) {
-		Action act = new Action(eAction.Draw, mainApp.getPlayer());
-		mainApp.messageSend(act);
-	}
 
 	@FXML
 	void btnDeal_Click(ActionEvent event) {
 		Action act = new Action(eAction.Deal, mainApp.getPlayer());
+		mainApp.messageSend(act);
+	}
+	@FXML
+	void btnDraw_Click(ActionEvent event) {
+		Action act = new Action(eAction.Draw, mainApp.getPlayer());
 		mainApp.messageSend(act);
 	}
 

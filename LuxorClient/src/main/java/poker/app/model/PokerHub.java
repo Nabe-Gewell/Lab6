@@ -16,6 +16,7 @@ import pokerBase.CardDraw;
 import pokerBase.Deck;
 import pokerBase.GamePlay;
 import pokerBase.GamePlayPlayerHand;
+import pokerBase.Hand;
 import pokerBase.Player;
 import pokerBase.Rule;
 import pokerBase.Table;
@@ -162,16 +163,41 @@ public class PokerHub extends Hub {
 				sendToAll(HubGamePlay);
 				break;
 			case Deal:
-
-				break;
+			break;
 			case Draw:
-				for (eDrawCount e:eDrawCount.values()) {
-					if (e.getDrawNo() < HubGamePlay.getRule().getTotalCardsToDraw()) {
-						DealCards(eDrawCount.FIRST);
+				CardDraw cd = null;
+				for (int i = 0; i < cd.getCardCountDrawn().getCardCount(); i++) {
+
+					if (cd.getCardDestination() == eCardDestination.Player) {
+						for (int n : HubGamePlay.getiActOrder()) {
+
+							if ((HubGamePlay.getPlayerByPosition(n) != null)
+									&& (HubGamePlay.getPlayerHand(HubGamePlay.getPlayerByPosition(n).getPlayerID()))
+											.isFolded() == false) {
+								try {
+									HubGamePlay.getPlayerHand(HubGamePlay.getPlayerByPosition(n).getPlayerID())
+											.Draw(HubGamePlay.getGameDeck());
+								} catch (DeckException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}
+						}
+
 					}
-				}
+					else if (cd.getCardDestination() == eCardDestination.Community)
+					{
+						try {
+							HubGamePlay.getCommonHand().Draw(HubGamePlay.getGameDeck());
+						} catch (DeckException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+			break;
 			}
 		}
+	}
 
 		// System.out.println("Message Received by Hub");
 	}
