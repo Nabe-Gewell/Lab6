@@ -129,12 +129,12 @@
                <children>
                   <HBox prefHeight="65.0" prefWidth="308.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Button id="btnStartGame" fx:id="btnStartGame" mnemonicParsing="false" onAction="#btnStart_Click" prefWidth="80.0" text="Start" />
                         <Button id="btnDeal" mnemonicParsing="false" onAction="#btnDeal_Click" prefWidth="80.0" text="Deal" />
+                         <Button fx:id="btnDrawCard" mnemonicParsing="false" onAction="#btnDraw_Click" prefHeight="28.0" prefWidth="80.0" text="Draw" />
                      </children>
                   </HBox>
                   <HBox id="hBoxDeck" fx:id="hBoxDeck" prefHeight="65.0" prefWidth="14.0" GridPane.rowIndex="1" />
-                   <Button fx:id="btnDrawCard" mnemonicParsing="false" onAction="#btnDraw_Click" prefHeight="28.0" prefWidth="80.0" text="Draw" GridPane.columnIndex="1" />
+                  <Button id="btnStartGame" fx:id="btnStartGame" mnemonicParsing="false" onAction="#btnStart_Click" prefWidth="80.0" text="Start" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <Button id="btnGetState" layoutX="191.0" layoutY="287.0" mnemonicParsing="false" onAction="#GetGameState" text="Get State" />
